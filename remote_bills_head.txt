@@ -1,0 +1,48 @@
+cat /app/src/routes/bills.js | head -n 45
+[?2004limport { Router } from "express";
+import db from "../db.js";
+import { requireAuth, requireRole } from "../middleware/auth.js";
+
+const router = Router();
+
+// ลูกบ้าน: ดูบิลค่าใช้จ่ายประจำเดือนของตนเอง (ค่าน้ำ, ค่าไฟ, ค่าห้อง, ยอดรวม)
+router.get("/my", requireAuth, async (req, res) => {
+  try {
+    const [tenantRows] = await db.query(
+      "SELECT id, room_id FROM dorm_tenants WHERE user_id = ? LIMIT 1",
+      [req.user.id]
+    );
+
+    if (tenantRows.length === 0) return res.json([]);
+    const tenant = tenantRows[0];
+
+    const [bills] = await db.query(
+      `SELECT b.*, 
+              r.room_number, r.room_type
+       FROM dorm_bills b
+       JOIN dorm_rooms r ON b.room_id = r.id
+       WHERE (b.tenant_id = ? OR (b.room_id = ? AND b.tenant_id IS NULL))
+       ORDER BY b.period DESC, b.created_at DESC`,
+      [tenant.id, tenant.room_id]
+    );
+
+    res.json(bills);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.use(requireAuth, requireRole("owner"));
+
+// เจ้าของหอพัก: ดึงตารางรวมค่าใช้จ่ายทุกห้องประจำเดือน (เช่น period=2026-09)
+router.get("/monthly", async (req, res) => {
+  try {
+    const period = req.query.period || new Date().toISOString().slice(0, 7);
+
+    // ดึงห้องพักทั้งหมด พร้อมข้อมูลผู้เช่าปัจจุบัน และข้อมูลบิลในเดือนนั้น (ถ้ามี)
+    const [rows] = await db.query(
+      `SELECT 
+         r.id AS room_id,
+         r.room_number,
+[?2004hstd6730202041@ip-course:~$ exit
+[?2004lexit

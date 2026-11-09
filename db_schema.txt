@@ -1,0 +1,33 @@
+mysql -h 127.0.0.1 -u std6730202041 -p's8*RgL1Z' ip_std6730202041 -e 'DESCRIBE dorm_payments; DESCRIBE dorm_bills;'
+[?2004lmysql: [Warning] Using a password on the command line interface can be insecure.
++------------+-----------------------+------+-----+-------------------+-------------------+
+| Field      | Type                  | Null | Key | Default           | Extra             |
++------------+-----------------------+------+-----+-------------------+-------------------+
+| id         | int                   | NO   | PRI | NULL              | auto_increment    |
+| tenant_id  | int                   | NO   | MUL | NULL              |                   |
+| amount     | decimal(10,2)         | NO   |     | NULL              |                   |
+| period     | varchar(50)           | NO   |     | NULL              |                   |
+| status     | enum('paid','unpaid') | NO   |     | unpaid            |                   |
+| paid_at    | timestamp             | YES  |     | NULL              |                   |
+| created_at | timestamp             | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++------------+-----------------------+------+-----+-------------------+-------------------+
++----------------+-----------------------+------+-----+-------------------+-------------------+
+| Field          | Type                  | Null | Key | Default           | Extra             |
++----------------+-----------------------+------+-----+-------------------+-------------------+
+| id             | int                   | NO   | PRI | NULL              | auto_increment    |
+| room_id        | int                   | NO   | MUL | NULL              |                   |
+| tenant_id      | int                   | YES  | MUL | NULL              |                   |
+| period         | varchar(50)           | NO   |     | NULL              |                   |
+| room_price     | decimal(10,2)         | NO   |     | 0.00              |                   |
+| water_units    | decimal(10,2)         | YES  |     | 0.00              |                   |
+| water_price    | decimal(10,2)         | NO   |     | 0.00              |                   |
+| electric_units | decimal(10,2)         | YES  |     | 0.00              |                   |
+| electric_price | decimal(10,2)         | NO   |     | 0.00              |                   |
+| other_fees     | decimal(10,2)         | YES  |     | 0.00              |                   |
+| total_amount   | decimal(10,2)         | NO   |     | 0.00              |                   |
+| status         | enum('unpaid','paid') | NO   |     | unpaid            |                   |
+| paid_at        | timestamp             | YES  |     | NULL              |                   |
+| created_at     | timestamp             | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++----------------+-----------------------+------+-----+-------------------+-------------------+
+[?2004hstd6730202041@ip-course:~$ exit
+[?2004lexit

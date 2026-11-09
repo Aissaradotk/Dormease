@@ -1,0 +1,14 @@
+{
+  "api_url": "http://119.59.102.161:3007/api/payment/notification",
+  "api_key": "dormease_secret_key_2026",
+  "target_app_keywords": ["LINE", "LINE Desktop", "line"],
+  "target_senders": ["Krungthai", "SCB", "KBank", "BBL", "ttb", "Krungsri", "GSB", "PromptPay"],
+  "bank_name": "auto",
+  "source_name": "line_desktop_bank",
+  "poll_interval_seconds": 1.5,
+  "supported_regex_patterns": [
+    "(?:เงินเข้า|รับเงิน|โอนเข้า|ยอดเงินเข้า|ได้รับเงิน|รับโอน|โอนสำเร็จ|ยอดเงิน|จำนวน)\\s*[:\\s]*([0-9,]+(?:\\.[0-9]{2})?)\\s*(?:บาท|บ\\.|THB)?",
+    "([0-9,]+(?:\\.[0-9]{2})?)\\s*(?:บาท|บ\\.|THB)",
+    "฿\\s*([0-9,]+(?:\\.[0-9]{2})?)"
+  ]
+}

@@ -1,0 +1,33 @@
+mysql -h 127.0.0.1 -u std6730202041 -p's8*RgL1Z' ip_std6730202041 -e 'SHOW TABLES; SELECT id, email, role, full_name FROM dorm_users;'
+[?2004lmysql: [Warning] Using a password on the command line interface can be insecure.
++----------------------------+
+| Tables_in_ip_std6730202041 |
++----------------------------+
+| Inventory                  |
+| Users                      |
+| dorm_bills                 |
+| dorm_bookings              |
+| dorm_move_outs             |
+| dorm_notifications         |
+| dorm_payments              |
+| dorm_repairs               |
+| dorm_rooms                 |
+| dorm_tenants               |
+| dorm_users                 |
++----------------------------+
++----+---------------------+--------+--------------------------------------------------------------------------+
+| id | email               | role   | full_name                                                                |
++----+---------------------+--------+--------------------------------------------------------------------------+
+|  1 | peem@gmail.com      | tenant | Peem                                                                     |
+|  2 | ddd@gmail.com       | tenant | DDD                                                                      |
+|  3 | admin@dormease.com  | owner  | เจ้าของหอพัก (ผู้ดูแลระบบ)                                               |
+|  4 | pppp@dormease.com   | tenant | pppp                                                                     |
+|  5 | pppp@gmail.com      | tenant | fd;kglf                                                                  |
+|  6 | peem23@gmail.com    | owner  | Kitipat                                                                  |
+|  7 | admin2@dormease.com | owner  | admin2                                                                   |
+|  8 | hani@dormease.com   | tenant | hani                                                                     |
+|  9 | ais@gmail.com       | tenant | ais                                                                      |
+| 10 | chao@2.com          | tenant | chao                                                                     |
++----+---------------------+--------+--------------------------------------------------------------------------+
+[?2004hstd6730202041@ip-course:~$ exit
+[?2004lexit
